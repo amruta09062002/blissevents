@@ -3,10 +3,15 @@ package com.example.BlissEvents.EventsEntity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.example.BlissEvents.VenuesEntity.Venues;
 
 @Entity
 public class Events {
@@ -16,18 +21,22 @@ public class Events {
 	private Long EventID;
 	private String EventName;
 	private LocalDate EventDate;
-	private Long VenueID;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "VenueID")
+	private Venues venue;
+	
 	private Long OrganizerID;
 	
 	public Events() {
 		
 	}
 
-	public Events(Long eventId, String eventName, LocalDate eventDate, Long venueID, Long organizerID) {
+	public Events(Long eventId, String eventName, LocalDate eventDate, Venues venue, Long organizerID) {
 		EventID = eventId;
 		EventName = eventName;
 		EventDate = eventDate;
-		VenueID = venueID;
+		this.venue = venue;
 		OrganizerID = organizerID;
 	}
 
@@ -55,12 +64,12 @@ public class Events {
 		EventDate = eventDate;
 	}
 
-	public Long getVenueID() {
-		return VenueID;
+	public Venues getVenue() {
+		return venue;
 	}
 
-	public void setVenueID(Long venueID) {
-		VenueID = venueID;
+	public void setVenue(Venues venue) {
+		this.venue = venue;
 	}
 
 	public Long getOrganizerID() {

@@ -178,7 +178,7 @@ public class EventsDao {
 			if (event != null) {
 				event.setEventName(updatedEvent.getEventName());
 				event.setEventDate(updatedEvent.getEventDate());
-				event.setVenueID(updatedEvent.getVenueID());
+				event.setVenue(updatedEvent.getVenue());
 				event.setOrganizerID(updatedEvent.getOrganizerID());
 				session.update(event);
 				transaction.commit();
@@ -205,7 +205,7 @@ public class EventsDao {
 				for (Events evnt : event) {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
-					evnt.setVenueID(updatedEvent.getVenueID());
+					evnt.setVenue(updatedEvent.getVenue());
 					evnt.setOrganizerID(updatedEvent.getOrganizerID());
 					session.update(evnt);
 				}
@@ -233,7 +233,7 @@ public class EventsDao {
 				for (Events evnt : event) {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
-					evnt.setVenueID(updatedEvent.getVenueID());
+					evnt.setVenue(updatedEvent.getVenue());
 					evnt.setOrganizerID(updatedEvent.getOrganizerID());
 					session.update(evnt);
 				}
