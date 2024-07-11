@@ -23,7 +23,6 @@ import com.example.BlissEvents.OrganizersMessages.OrganizersMessages;
 @Repository
 public class OrganizersDao {
 	
-
 	@Autowired
 	SessionFactory factory;
 
