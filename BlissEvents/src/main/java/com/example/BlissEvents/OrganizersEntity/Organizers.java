@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.example.BlissEvents.EventsEntity.Events;
 
@@ -19,20 +20,16 @@ public class Organizers {
 	private String organizerName;
 	private String phoneNumber;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "EventID")
-    private Events event;
 	
 	public Organizers() {
 		
 	}
 
-	public Organizers(int organizerID, String organizerName, String phoneNumber, Events event) {
+	public Organizers(int organizerID, String organizerName, String phoneNumber) {
 		super();
 		this.organizerID = organizerID;
 		this.organizerName = organizerName;
 		this.phoneNumber = phoneNumber;
-		this.event = event;
 	}
 
 	public int getOrganizerID() {
@@ -58,13 +55,4 @@ public class Organizers {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public Events getEvent() {
-		return event;
-	}
-
-	public void setEvent(Events event) {
-		this.event = event;
-	}
-
 }

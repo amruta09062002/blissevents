@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.example.BlissEvents.OrganizersEntity.Organizers;
 import com.example.BlissEvents.VenuesEntity.Venues;
 
 @Entity
@@ -22,22 +23,32 @@ public class Events {
 	private String EventName;
 	private LocalDate EventDate;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "VenueID")
-	private Venues venue;
-	
-	private Long OrganizerID;
+	@ManyToOne
+    @JoinColumn(name = "organizer_id", referencedColumnName = "organizerId")
+    private Organizers organizer;
+    
+    @ManyToOne
+    @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
+    private Venues venue;
 	
 	public Events() {
 		
 	}
 
-	public Events(Long eventId, String eventName, LocalDate eventDate, Venues venue, Long organizerID) {
-		EventID = eventId;
+	public Events(String eventName, LocalDate eventDate, Organizers organizer, Venues venue) {
+		super();
 		EventName = eventName;
 		EventDate = eventDate;
+		this.organizer = organizer;
 		this.venue = venue;
-		OrganizerID = organizerID;
+	}
+
+	public Organizers getOrganizer() {
+		return organizer;
+	}
+
+	public void setOrganizer(Organizers organizer) {
+		this.organizer = organizer;
 	}
 
 	public Long getEventID() {
@@ -71,14 +82,5 @@ public class Events {
 	public void setVenue(Venues venue) {
 		this.venue = venue;
 	}
-
-	public Long getOrganizerID() {
-		return OrganizerID;
-	}
-
-	public void setOrganizerID(Long organizerID) {
-		OrganizerID = organizerID;
-	}
-
 
 }

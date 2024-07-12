@@ -14,11 +14,7 @@ import com.example.BlissEvents.EventsEntity.Events;
 public class Sounds {
 
 	@Id
-<<<<<<< HEAD
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-=======
-	@GeneratedValue(strategy = GenerationType.AUTO)
->>>>>>> refs/remotes/origin/Akash
 	private long soundId;
 	private String soundType;
 	private String soundBrand;
@@ -26,11 +22,7 @@ public class Sounds {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "EventID")
-<<<<<<< HEAD
-	private Events events;
-=======
 	private Events event;
->>>>>>> refs/remotes/origin/Akash
 
 	public Sounds() {
 		
@@ -43,11 +35,7 @@ public class Sounds {
 		this.soundQuantity = soundQuantity;
 		this.event = event;
 	}
-
-<<<<<<< HEAD
-=======
 	
->>>>>>> refs/remotes/origin/Akash
 	public long getSoundId() {
 		return soundId;
 	}
