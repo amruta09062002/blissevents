@@ -14,16 +14,9 @@ import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
 public class CategoryDao {
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/Akash
 	@Autowired
 	SessionFactory factory;
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/Akash
 
 	public boolean insertCategory(Categories categories) {
 		Transaction transaction = null;
