@@ -1,7 +1,5 @@
 package com.example.BlissEvents.CategoryDao;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 
 import org.hibernate.Criteria;
@@ -16,14 +14,9 @@ import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
->>>>>>> refs/remotes/origin/Akash
 public class CategoryDao {
-<<<<<<< HEAD
-=======
-
 	@Autowired
 	SessionFactory factory;
->>>>>>> refs/remotes/origin/Akash
 
 	public boolean insertCategory(Categories categories) {
 		Transaction transaction = null;

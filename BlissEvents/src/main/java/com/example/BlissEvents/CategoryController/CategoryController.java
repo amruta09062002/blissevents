@@ -1,7 +1,5 @@
 package com.example.BlissEvents.CategoryController;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +17,8 @@ import com.example.BlissEvents.CategoryService.CategoryService;
 
 @RestController
 @RequestMapping("/api/categories")
->>>>>>> refs/remotes/origin/Akash
 public class CategoryController {
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	CategoryService categoryService;
 	
@@ -56,5 +51,4 @@ public class CategoryController {
 	public String deleteAllCategories(Categories categories) {
 		return categoryService.deleteAllCategories(categories);
 	}
->>>>>>> refs/remotes/origin/Akash
 }

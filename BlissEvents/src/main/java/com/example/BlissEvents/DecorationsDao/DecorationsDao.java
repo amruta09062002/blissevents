@@ -1,7 +1,5 @@
 package com.example.BlissEvents.DecorationsDao;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +15,8 @@ import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
->>>>>>> refs/remotes/origin/Akash
 public class DecorationsDao {
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	SessionFactory factory;
 
@@ -231,5 +226,4 @@ public class DecorationsDao {
 			return EventsMessages.errorMessage();
 		}
 	}
->>>>>>> refs/remotes/origin/Akash
 }

@@ -1,7 +1,5 @@
 package com.example.BlissEvents.DecorationsController;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +16,8 @@ import com.example.BlissEvents.DecorationsService.DecorationsService;
 
 @RestController
 @RequestMapping("/api/decorations")
->>>>>>> refs/remotes/origin/Akash
 public class DecorationsController {
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	DecorationsService decorationservice;
 	
@@ -85,5 +80,4 @@ public class DecorationsController {
 	public String updateDecorationByBrand(@PathVariable("decorationBrand") String decorationBrand, @RequestBody Decorations updatedecorations) {
 		return decorationservice.updateDecorationByBrand(decorationBrand,updatedecorations);
 	}
->>>>>>> refs/remotes/origin/Akash
 }

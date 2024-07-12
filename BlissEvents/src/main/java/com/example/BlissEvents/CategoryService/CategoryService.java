@@ -1,7 +1,5 @@
 package com.example.BlissEvents.CategoryService;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +11,8 @@ import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service
->>>>>>> refs/remotes/origin/Akash
 public class CategoryService {
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	CategoryDao categoryDao;
 
@@ -65,6 +60,4 @@ public class CategoryService {
 			return EventsMessages.NotDeleteIdMessage();
 		}
 	}
-
->>>>>>> refs/remotes/origin/Akash
 }
