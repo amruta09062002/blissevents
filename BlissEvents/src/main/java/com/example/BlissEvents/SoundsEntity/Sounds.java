@@ -14,30 +14,30 @@ import com.example.BlissEvents.EventsEntity.Events;
 public class Sounds {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long soundId;
 	private String soundType;
 	private String soundBrand;
 	private int soundQuantity;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "event_id")
-	private Events events;
+	@JoinColumn(name = "EventID")
+	private Events event;
 
 	public Sounds() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sounds(String soundType, String soundBrand, int soundQuantity, Events events) {
+	public Sounds(String soundType, String soundBrand, int soundQuantity, Events event) {
 		super();
 		this.soundType = soundType;
 		this.soundBrand = soundBrand;
 		this.soundQuantity = soundQuantity;
-		this.events = events;
+		this.event = event;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public long getSoundId() {
 		return soundId;
 	}
@@ -71,11 +71,11 @@ public class Sounds {
 	}
 
 	public Events getEvents() {
-		return events;
+		return event;
 	}
 
-	public void setEvents(Events events) {
-		this.events = events;
+	public void setEvents(Events event) {
+		this.event = event;
 	}
 
 }
