@@ -2,6 +2,7 @@ package com.example.BlissEvents.SoundsEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -10,6 +11,7 @@ import com.example.BlissEvents.EventsEntity.Events;
 @Entity
 public class Sounds {
 
+	@Id
 	private long soundId;
 	private String soundType;
 	private String soundBrand;
