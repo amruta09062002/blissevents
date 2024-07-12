@@ -3,15 +3,12 @@ package com.example.BlissEvents.SoundsService;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 import com.example.BlissEvents.SoundsDao.SoundsDao;
 import com.example.BlissEvents.SoundsEntity.Sounds;
-import com.zaxxer.hikari.util.ClockSource.Factory;
 
 @Service
 public class SoundsService {
@@ -113,5 +110,4 @@ public class SoundsService {
 			return EventsMessages.notUpdatedMessage();
 		}
 	}
-
 }

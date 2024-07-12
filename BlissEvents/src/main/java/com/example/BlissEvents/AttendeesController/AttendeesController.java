@@ -22,7 +22,7 @@ public class AttendeesController {
 	@Autowired
 	AttendeesService attendeesService;
 
-	@PostMapping("/insertAttendee")
+	@PostMapping("/insert-attendee")
 	public String insertAttendee(@RequestBody Attendees attendees) {
 		return attendeesService.insertAttendee(attendees);
 	}
@@ -32,72 +32,72 @@ public class AttendeesController {
 		return attendeesService.getAllAttendees();
 	}
 
-	@GetMapping("/getAttendeeById/{attendeeID}")
+	@GetMapping("/get-attendee-by-id/{attendeeID}")
 	public Attendees getAttendeeById(@PathVariable("attendeeID") Long id) {
 		return attendeesService.getAttendeeById(id);
 	}
 
-	@GetMapping("/getAttendeeByFirstName/{firstName}")
+	@GetMapping("/get-attendee-by-firstname/{firstName}")
 	public List<Attendees> getAttendeeByFirstName(@PathVariable("firstName") String fname) {
 		return attendeesService.getAttendeeByFirstName(fname);
 	}
 
-	@GetMapping("/getAttendeeByLastName/{lastName}")
+	@GetMapping("/get-attendee-by-lastname/{lastName}")
 	public List<Attendees> getAttendeeByLastName(@PathVariable("lastName") String lname) {
 		return attendeesService.getAttendeeByLastName(lname);
 	}
 
-	@GetMapping("/getAttendeeByphoneNumber/{phoneNumber}")
+	@GetMapping("/get-attendee-by-phonenumber/{phoneNumber}")
 	public Attendees getAttendeeByPhoneNumber(@PathVariable("phoneNumber") String Phone) {
 		return attendeesService.getAttendeeByPhoneNumber(Phone);
 	}
 
-	@DeleteMapping("/deleteAttendeeById/{attendeeID}")
+	@DeleteMapping("/delete-attendee-by-id/{attendeeID}")
 	public String deleteAttendeeById(@PathVariable("attendeeID") Long id) {
 		return attendeesService.deleteAttendeeById(id);
 	}
 
-	@DeleteMapping("/deleteAttendeeByFirstName/{firstName}")
+	@DeleteMapping("/delete-attendee-by-firstname/{firstName}")
 	public String deleteAttendeeByFirstName(@PathVariable("firstName") String fname) {
 		return attendeesService.deleteAttendeeByFirstName(fname);
 	}
 
-	@DeleteMapping("/deleteAttendeeByLastName/{lastName}")
+	@DeleteMapping("/delete-attendee-by-lastname/{lastName}")
 	public String deleteAttendeeByLastName(@PathVariable("lastName") String lname) {
 		return attendeesService.deleteAttendeeByLastName(lname);
 	}
 
-	@DeleteMapping("/deleteAttendeeByphoneNumber/{phoneNumber}")
+	@DeleteMapping("/delete-attendee-by-phonenumber/{phoneNumber}")
 	public String deleteAttendeeByphoneNumber(@PathVariable("phoneNumber") String phone) {
 		return attendeesService.deleteAttendeeByphoneNumber(phone);
 	}
 
-	@DeleteMapping("/deleteAllAttendees")
+	@DeleteMapping("/delete-all-attendees")
 	public String deleteAllAttendees() {
 		return attendeesService.deleteAllAttendees();
 	}
 
-	@PutMapping("/updateAttendeeById/{attendeeID}")
+	@PutMapping("/update-attendee-by-id/{attendeeID}")
 	public String updateAttendeeById(@PathVariable("attendeeID") Long id, @RequestBody Attendees updatedAttendee) {
 		return attendeesService.updateAttendeeById(id, updatedAttendee);
 	}
 	
-	@PutMapping("/updateAttendeeByFirstName/{firstName}")
+	@PutMapping("/update-attendee-by-firstname/{firstName}")
 	public String updateAttendeeByFirstName(@PathVariable("firstName") String name, @RequestBody Attendees updatedAttendee) {
 		return attendeesService.updateAttendeeByFirstName(name, updatedAttendee);
 	}
 	
-	@PutMapping("/updateAttendeeByLastName/{lastName}")
+	@PutMapping("/update-attendee-by-lastname/{lastName}")
 	public String updateAttendeeByLastName(@PathVariable("lastName") String lname, @RequestBody Attendees updatedAttendee) {
 		return attendeesService.updateAttendeeByLastName(lname, updatedAttendee);
 	}
 	
-	@PutMapping("/updateAttendeeByphoneNumber/{phoneNumber}")
+	@PutMapping("/update-attendee-by-phonenumber/{phoneNumber}")
 	public String updateAttendeeByphoneNumber(@PathVariable("phoneNumber") String phone, @RequestBody Attendees updatedAttendee) {
 		return attendeesService.updateAttendeeByphoneNumber(phone, updatedAttendee);
 	}
 	
-	@GetMapping("/sortedByFirstName")
+	@GetMapping("/sorted-by-firstname")
     public List<Attendees> getAttendeesSortedByFirstName() {
         return attendeesService.getAttendeesSortedByFirstName();
     }

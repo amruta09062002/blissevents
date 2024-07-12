@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.BlissEvents.CategoryEntity.Categories;
-import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
@@ -18,6 +17,7 @@ public class CategoryDao {
 
 	@Autowired
 	SessionFactory factory;
+
 
 	public boolean insertCategory(Categories categories) {
 		Transaction transaction = null;

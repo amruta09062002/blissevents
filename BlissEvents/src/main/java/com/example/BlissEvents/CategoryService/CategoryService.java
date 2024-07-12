@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlissEvents.CategoryDao.CategoryDao;
 import com.example.BlissEvents.CategoryEntity.Categories;
-import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service

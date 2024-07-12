@@ -56,7 +56,6 @@ public class DecorationsController {
 		return decorationservice.deleteDecorationByType(decorationType);
 	}
 	
-	@DeleteMapping("/delete-decoration-by-brand/{decorationBrand}")
 	public String deleteDecorationByBrand(@PathVariable("decorationBrand") Long decorationBrand) {
 		return decorationservice.deleteDecorationByBrand(decorationBrand);
 	}
@@ -80,4 +79,5 @@ public class DecorationsController {
 	public String updateDecorationByBrand(@PathVariable("decorationBrand") String decorationBrand, @RequestBody Decorations updatedecorations) {
 		return decorationservice.updateDecorationByBrand(decorationBrand,updatedecorations);
 	}
+
 }
