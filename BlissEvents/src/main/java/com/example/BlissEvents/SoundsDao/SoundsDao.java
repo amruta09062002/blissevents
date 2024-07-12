@@ -18,6 +18,10 @@ public class SoundsDao {
 
 	@Autowired
 	SessionFactory factory;
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/Akash
 
 	public boolean insertSounds(Sounds sounds) {
 		try {
@@ -217,4 +221,8 @@ public class SoundsDao {
 		}
 		return EventsMessages.updatedMessage();
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/Akash
 }

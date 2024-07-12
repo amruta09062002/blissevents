@@ -13,7 +13,6 @@ import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service
 public class DecorationsService {
-
 	@Autowired
 	DecorationsDao decorationsDao;
 
@@ -39,7 +38,7 @@ public class DecorationsService {
 	}
 
 	public List<Decorations> getEventByType(String decorationType) {
-		if (decorationsDao.getEventByType(decorationType)!=null) {
+		if (decorationsDao.getEventByType(decorationType) != null) {
 			return decorationsDao.getEventByType(decorationType);
 		} else {
 			EventsMessages.notDisplayMessage();
@@ -48,7 +47,7 @@ public class DecorationsService {
 	}
 
 	public List<Decorations> getEventByBrand(String decorationBrand) {
-		if (decorationsDao.getEventByBrand(decorationBrand)!=null) {
+		if (decorationsDao.getEventByBrand(decorationBrand) != null) {
 			return decorationsDao.getEventByBrand(decorationBrand);
 		} else {
 			EventsMessages.notDisplayMessage();
@@ -57,12 +56,12 @@ public class DecorationsService {
 	}
 
 	public String deleteDecorationById(Long decorationId) {
-			if (decorationsDao.deleteDecorationById(decorationId)) {
-				return EventsMessages.deleteIdMessage();
-			} else {
-				return EventsMessages.NotDeleteIdMessage();
-			}
+		if (decorationsDao.deleteDecorationById(decorationId)) {
+			return EventsMessages.deleteIdMessage();
+		} else {
+			return EventsMessages.NotDeleteIdMessage();
 		}
+	}
 
 	public String deleteDecorationByType(Long decorationType) {
 		if (decorationsDao.deleteDecorationByType(decorationType)) {
@@ -89,7 +88,7 @@ public class DecorationsService {
 	}
 
 	public String updateDecorationById(Long decorationId, Decorations updatedecorations) {
-		if (decorationsDao.updateDecorationById(decorationId,updatedecorations)!=null) {
+		if (decorationsDao.updateDecorationById(decorationId, updatedecorations) != null) {
 			return EventsMessages.updatedMessage();
 		} else {
 			return EventsMessages.notUpdatedMessage();
