@@ -2,6 +2,8 @@ package com.example.BlissEvents.SoundsEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,18 +18,17 @@ public class Sounds {
 	private String soundType;
 	private String soundBrand;
 	private int soundQuantity;
-	
-	@ManyToOne(cascade =CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "event_id")
 	private Events events;
-	
 
 	public Sounds() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sounds( String soundType, String soundBrand, int soundQuantity, Events events) {
+	public Sounds(String soundType, String soundBrand, int soundQuantity, Events events) {
 		super();
 		this.soundType = soundType;
 		this.soundBrand = soundBrand;
@@ -35,6 +36,8 @@ public class Sounds {
 		this.events = events;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getSoundId() {
 		return soundId;
 	}
@@ -74,7 +77,5 @@ public class Sounds {
 	public void setEvents(Events events) {
 		this.events = events;
 	}
-	
-	
-	
+
 }
