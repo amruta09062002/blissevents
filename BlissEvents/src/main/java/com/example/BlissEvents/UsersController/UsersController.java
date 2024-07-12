@@ -38,92 +38,68 @@ public class UsersController {
 	}
 
 	@GetMapping("/get-user-by-id/{userId}")
-	public Events getUsersById(@PathVariable("userId") Long userId) {
+	public Users getUsersById(@PathVariable("userId") Long userId) {
 		return userservice.getUsersById(userId);
 	}
 
-	@GetMapping("/get-event-by-name/{EventName}")
-	public List<Events> getEventByName(@PathVariable("EventName") String eventName) {
-		return userservice.getEventByName(eventName);
-	}
-
-	@GetMapping("/get-event-by-date/{eventDate}")
-	public List<Events> getEventByDate(
-			@PathVariable("eventDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate eventDate) {
-		return userservice.getEventByDate(eventDate);
-	}
-
-	@DeleteMapping("/delete-event-by-id/{EventID}")
-	public String deleteEventById(@PathVariable("EventID") Long eventId) {
-		return userservice.deleteEventById(eventId);
-	}
-
-	@DeleteMapping("/delete-event-by-name/{EventName}")
-	public String deleteEventByName(@PathVariable("EventName") String eventName) {
-		return userservice.deleteEventByName(eventName);
-	}
-
-	@DeleteMapping("/delete-event-by-date/{eventDate}")
-	public String deleteEventByDate(
-			@PathVariable("eventDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate eventDate) {
-		return userservice.deleteEventByDate(eventDate);
-	}
-
-	@DeleteMapping("/delete-all-events")
-	public String deleteAllEvent(Events event) {
-		return userservice.deleteAllEvent(event);
+	@GetMapping("/get-event-by-name/{userName}")
+	public List<Users> getUsersByName(@PathVariable("userName") String userName) {
+		return userservice.getUsersByName(userName);
 	}
 	
-	@PutMapping("/update-record-by-id/{EventID}")
-	public String updateEventById(@PathVariable Long EventID, @RequestBody Events updatedEvent) {
-		return userservice.updateEventById(EventID,updatedEvent);
+	@GetMapping("/get-event-by-fname/{firstName}")
+	public List<Users> getUsersByFName(@PathVariable("firstName") String firstName) {
+		return userservice.getUsersFByName(firstName);
 	}
 	
-	@PutMapping("/update-record-by-name/{EventName}")
-	public String updateEventByName(@PathVariable String EventName, @RequestBody Events updatedEvent) {
-		return userservice.updateEventByName(EventName,updatedEvent);
+	@GetMapping("/get-event-by-lname/{lastName}")
+	public List<Users> getUsersByLName(@PathVariable("lastName") String lastName) {
+		return userservice.getUsersByLName(lastName);
+	}
+
+	@DeleteMapping("/delete-user-by-id/{userId}")
+	public String deleteUsersById(@PathVariable("userId") Long userId) {
+		return userservice.deleteUsersById(userId);
+	}
+
+	@DeleteMapping("/delete-user-by-name/{userName}")
+	public String deleteUserByName(@PathVariable("userName") String userName) {
+		return userservice.deleteUserByName(userName);
 	}
 	
-	@PutMapping("/update-event-by-date/{EventDate}")
-	public String updateEventByDate(
-			@PathVariable("EventDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate EventDate, @RequestBody Events updatedEvent) {
-		return userservice.updateEventByDate(EventDate, updatedEvent);
+	@DeleteMapping("/delete-event-by-fname/{firstName}")
+	public List<Users> deleteUsersByFName(@PathVariable("firstName") String firstName) {
+		return userservice.deleteUsersByFName(firstName);
 	}
 	
-	@GetMapping("/date-range/{fromDate}/{toDate}")
-	public Object getEventsBetweenDates(@PathVariable("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-    @PathVariable("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate) {
-		return userservice.getEventsBetweenDates(fromDate, toDate);
+	@DeleteMapping("/delete-event-by-lname/{lastName}")
+	public List<Users> deleteUsersByLName(@PathVariable("lastName") String lastName) {
+		return userservice.deleteUsersByLName(lastName);
+	}
+
+	@DeleteMapping("/delete-all-users")
+	public String deleteAllUsers(Users user) {
+		return userservice.deleteAllUsers(user);
+	}
+	
+	@PutMapping("/update-record-by-id/{userId}")
+	public String updateUserById(@PathVariable Long userId, @RequestBody Users updatedUsers) {
+		return userservice.updateUserById(userId,updatedUsers);
+	}
+	
+	@PutMapping("/update-record-by-name/{userName}")
+	public String updateUserByName(@PathVariable String userName, @RequestBody Users updatedUsers) {
+		return userservice.updateUserByName(userName,updatedUsers);
 	}
 	
 	@GetMapping("/ordered-by-name")
-	public Object getEventsOrderedByName() {
-		return userservice.getEventsOrderedByName();
+	public Object getUsersOrderedByUName() {
+		return userservice.getUsersOrderedByUName();
 	}
 	
 	@GetMapping("/ordered-by-name-desc")
-	public Object getEventsOrderedByDescName() {
-		return userservice.getEventsOrderedByDescName();
-	}
-	
-	@GetMapping("/ordered-by-date")
-	public Object getEventsOrderedByDate() {
-		return userservice.getEventsOrderedByDate();
-	}
-	
-	@GetMapping("/ordered-by-date-desc")
-	public Object getEventsOrderedByDescDate() {
-		 Object result = userservice.getEventsOrderedByDescDate();
-	        if (result instanceof List) {
-	            List<Events> events = (List<Events>) result;
-	            if (!events.isEmpty()) {
-	                return events;
-	            } else {
-	                return EventsMessages.errorMessage();
-	            }
-	        } else {
-	            return result;
-	        }
+	public Object getUsersOrderedByDescUName() {
+		return userservice.getUsersOrderedByDescUName();
 	}
 
 }
