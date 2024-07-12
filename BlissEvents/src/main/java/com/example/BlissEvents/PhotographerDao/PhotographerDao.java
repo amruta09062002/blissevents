@@ -194,6 +194,7 @@ public class PhotographerDao {
 			if (existingPhotographer != null) {
 				existingPhotographer.setPhotographerName(updatedPhotographer.getPhotographerName());
 				existingPhotographer.setContactInfo(updatedPhotographer.getContactInfo());
+				existingPhotographer.setEvent(updatedPhotographer.getEvent());
 
 				session.update(existingPhotographer);
 				transaction.commit();
@@ -221,7 +222,8 @@ public class PhotographerDao {
 			if (existingPhotographer != null) {
 				existingPhotographer.setPhotographerName(updatedPhotographer.getPhotographerName());
 				existingPhotographer.setContactInfo(updatedPhotographer.getContactInfo());
-
+				existingPhotographer.setEvent(updatedPhotographer.getEvent());
+				
 				session.update(existingPhotographer);
 				transaction.commit();
 				isUpdated = true;
@@ -248,6 +250,7 @@ public class PhotographerDao {
 			if (existingPhotographer != null) {
 				existingPhotographer.setPhotographerName(updatedPhotographer.getPhotographerName());
 				existingPhotographer.setContactInfo(updatedPhotographer.getContactInfo());
+				existingPhotographer.setEvent(updatedPhotographer.getEvent());
 
 				session.update(existingPhotographer);
 				transaction.commit();
