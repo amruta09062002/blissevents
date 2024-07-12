@@ -74,7 +74,40 @@ public class SoundsService {
 	}
 
 	public String updateSoundById(Long soundId, Sounds updateSound) {
-		if (SoundsDao.updateSoundById(soundId, updateSound)!=null) {
+		if (soundsDao.updateSoundById(soundId, updateSound) != null) {
+			return EventsMessages.updatedMessage();
+		} else {
+			return EventsMessages.notUpdatedMessage();
+		}
+	}
+
+	public String updateSoundByType(String soundType, Sounds updateSound) {
+		if (soundsDao.updateSoundByType(soundType, updateSound) != null) {
+			return EventsMessages.updatedMessage();
+		} else {
+			return EventsMessages.notUpdatedMessage();
+		}
+	}
+
+	public String deleteSoundByBrand(String soundBrand) {
+		if (soundsDao.deleteSoundByBrand(soundBrand)) {
+			return EventsMessages.deleteIdMessage();
+		} else {
+			return EventsMessages.NotDeleteIdMessage();
+		}
+	}
+
+	public List<Sounds> getSoundByBrand(String soundBrand) {
+		if (soundsDao.getSoundByBrand(soundBrand) != null) {
+			return  soundsDao.getSoundByBrand(soundBrand);
+		} else {
+			EventsMessages.errorMessage();
+		}
+		return null;
+	}
+
+	public String updateSoundByBrand(String soundBrand, Sounds updateSound) {
+		if (soundsDao.updateSoundByBrand(soundBrand, updateSound) != null) {
 			return EventsMessages.updatedMessage();
 		} else {
 			return EventsMessages.notUpdatedMessage();

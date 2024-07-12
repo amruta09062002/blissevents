@@ -1,11 +1,9 @@
 package com.example.BlissEvents.SoundsController;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,18 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.BlissEvents.EventsEntity.Events;
-import com.example.BlissEvents.EventsMessages.EventsMessages;
 import com.example.BlissEvents.SoundsEntity.Sounds;
 import com.example.BlissEvents.SoundsService.SoundsService;
 
 @RestController
 @RequestMapping("/api/sounds")
 public class SoundsController {
-	
+
 	@Autowired
 	SoundsService soundService;
-	
+
 	@PostMapping("/insert")
 	public String insertSounds(@RequestBody Sounds sounds) {
 		return soundService.insertSounds(sounds);
@@ -47,7 +43,11 @@ public class SoundsController {
 		return soundService.getSoundByType(soundType);
 	}
 
-
+	@GetMapping("/get-sounds-by-brand/{soundBrand}")
+	public List<Sounds> getSoundByBrand(@PathVariable("soundBrand") String soundBrand) {
+		return soundService.getSoundByBrand(soundBrand);
+	}
+	
 	@DeleteMapping("/delete-sound-by-id/{soundId}")
 	public String deleteSoundsById(@PathVariable("soundId") Long soundId) {
 		return soundService.deleteSoundstById(soundId);
@@ -58,61 +58,32 @@ public class SoundsController {
 		return soundService.deleteSoundByType(soundType);
 	}
 
+	@DeleteMapping("/delete-Sound-by-brand/{soundBrand}")
+	public String deleteSoundByBrand(@PathVariable("soundBrand") String soundBrand) {
+		return soundService.deleteSoundByBrand(soundBrand);
+	}
+	
 	@DeleteMapping("/delete-all-sounds")
 	public String deleteAllSounds(Sounds sounds) {
 		return soundService.deleteAllSounds(sounds);
 	}
-	
-	@PutMapping("/update-record-by-id/{soundId}")
+
+	@PutMapping("/update-sound-by-id/{soundId}")
 	public String updateSoundById(@PathVariable Long soundId, @RequestBody Sounds updateSound) {
-		return soundService.updateSoundById(soundId,updateSound);
+		return soundService.updateSoundById(soundId, updateSound);
+	}
+
+	@PutMapping("/update-sound-by-brand/{soundBrand}")
+	public String updateSoundByBrand(@PathVariable String soundBrand, @RequestBody Sounds updateSound) {
+		return soundService.updateSoundByBrand(soundBrand, updateSound);
 	}
 	
-	@PutMapping("/update-record-by-name/{EventName}")
-	public String updateEventByName(@PathVariable String EventName, @RequestBody Events updatedEvent) {
-		return soundService.updateEventByName(EventName,updatedEvent);
+	@PutMapping("/update-sound-by-type/{soundType}")
+	public String updateSoundByType(@PathVariable String soundType, @RequestBody Sounds updateSound) {
+		return soundService.updateSoundByType(soundType, updateSound);
 	}
 	
-	@PutMapping("/update-event-by-date/{EventDate}")
-	public String updateEventByDate(
-			@PathVariable("EventDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate EventDate, @RequestBody Events updatedEvent) {
-		return soundService.updateEventByDate(EventDate, updatedEvent);
-	}
 	
-	@GetMapping("/date-range/{fromDate}/{toDate}")
-	public Object getEventsBetweenDates(@PathVariable("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-    @PathVariable("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate) {
-		return soundService.getEventsBetweenDates(fromDate, toDate);
-	}
 	
-	@GetMapping("/ordered-by-name")
-	public Object getEventsOrderedByName() {
-		return soundService.getEventsOrderedByName();
-	}
-	
-	@GetMapping("/ordered-by-name-desc")
-	public Object getEventsOrderedByDescName() {
-		return soundService.getEventsOrderedByDescName();
-	}
-	
-	@GetMapping("/ordered-by-date")
-	public Object getEventsOrderedByDate() {
-		return soundService.getEventsOrderedByDate();
-	}
-	
-	@GetMapping("/ordered-by-date-desc")
-	public Object getEventsOrderedByDescDate() {
-		 Object result = soundService.getEventsOrderedByDescDate();
-	        if (result instanceof List) {
-	            List<Events> events = (List<Events>) result;
-	            if (!events.isEmpty()) {
-	                return events;
-	            } else {
-	                return EventsMessages.errorMessage();
-	            }
-	        } else {
-	            return result;
-	        }
-	}
 
 }

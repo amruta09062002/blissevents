@@ -118,7 +118,7 @@ public class SoundsDao {
 		return false;
 	}
 
-	public  String updateSoundById(Long soundId, Sounds updateSound) {
+	public String updateSoundById(Long soundId, Sounds updateSound) {
 		Transaction transaction = null;
 		Sounds sounds = null;
 		try (Session session = factory.openSession();) {
@@ -142,6 +142,82 @@ public class SoundsDao {
 			}
 			return EventsMessages.errorMessage();
 		}
+	}
+
+	public Object updateSoundByType(String soundType, Sounds updateSound) {
+
+		Transaction transaction = null;
+		Sounds sounds = null;
+		try (Session session = factory.openSession()) {
+			transaction = session.beginTransaction();
+			sounds = session.get(Sounds.class, soundType);
+			if (sounds != null) {
+				sounds.setSoundBrand(updateSound.getSoundBrand());
+				sounds.setSoundQuantity(updateSound.getSoundQuantity());
+				sounds.setEvents(updateSound.getEvents());
+				session.update(sounds);
+				transaction.commit();
+			} else {
+				return EventsMessages.errorMessage();
+			}
+
+		} catch (Exception e) {
+			if (transaction != null)
+				transaction.rollback();
+		}
+		return EventsMessages.updatedMessage();
+	}
+
+	public boolean deleteSoundByBrand(String soundBrand) {
+		try {
+			Session session = factory.openSession();
+			Transaction transaction = session.beginTransaction();
+			Sounds sounds = session.load(Sounds.class, soundBrand);
+			session.delete(sounds);
+			transaction.commit();
+			session.close();
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
+		}
+		return true;
+	}
+
+	public List<Sounds> getSoundByBrand(String soundBrand) {
+		List<Sounds> soundlist = null;
+		Session session = null;
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sounds.class, soundBrand);
+			soundlist = criteria.list();
+			session.close();
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
+		}
+		return null;
+	}
+
+	public Object updateSoundByBrand(String soundBrand, Sounds updateSound) {
+
+		Transaction transaction = null;
+		Sounds sounds = null;
+		try (Session session = factory.openSession()) {
+			transaction = session.beginTransaction();
+			sounds = session.get(Sounds.class, soundBrand);
+			if (sounds != null) {
+				sounds.setSoundType(updateSound.getSoundType());
+				sounds.setSoundQuantity(updateSound.getSoundQuantity());
+				sounds.setEvents(updateSound.getEvents());
+				session.update(sounds);
+				transaction.commit();
+			} else {
+				return EventsMessages.errorMessage();
+			}
+
+		} catch (Exception e) {
+			if (transaction != null)
+				transaction.rollback();
+		}
+		return EventsMessages.updatedMessage();
 	}
 
 }

@@ -2,11 +2,8 @@ package com.example.BlissEvents.SoundsEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-=======
->>>>>>> refs/remotes/origin/Amruta
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
