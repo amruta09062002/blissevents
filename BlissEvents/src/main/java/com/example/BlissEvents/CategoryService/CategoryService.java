@@ -59,8 +59,4 @@ public class CategoryService {
 			return EventsMessages.NotDeleteIdMessage();
 		}
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/Akash
 }

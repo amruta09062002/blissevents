@@ -14,12 +14,6 @@ import com.example.BlissEvents.SoundsEntity.Sounds;
 public class SoundsService {
 
 	@Autowired
-<<<<<<< HEAD
-<<<<<<< HEAD
-	SoundsDao dao;
-=======
-=======
->>>>>>> refs/remotes/origin/Akash
 	SoundsDao soundsDao;
 
 	public String insertSounds(Sounds sounds) {
@@ -116,9 +110,4 @@ public class SoundsService {
 			return EventsMessages.notUpdatedMessage();
 		}
 	}
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/Akash
-
-=======
->>>>>>> refs/remotes/origin/Akash
 }

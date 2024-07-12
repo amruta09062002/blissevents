@@ -1,44 +1,18 @@
 package com.example.BlissEvents.SoundsController;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> refs/remotes/origin/Akash
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/Akash
-=======
->>>>>>> refs/remotes/origin/Akash
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> refs/remotes/origin/Akash
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/Akash
-=======
->>>>>>> refs/remotes/origin/Akash
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import com.example.BlissEvents.SoundsEntity.Sounds;
->>>>>>> refs/remotes/origin/Akash
-=======
-import com.example.BlissEvents.SoundsEntity.Sounds;
->>>>>>> refs/remotes/origin/Akash
 import com.example.BlissEvents.SoundsService.SoundsService;
 
 @RestController
@@ -46,12 +20,6 @@ import com.example.BlissEvents.SoundsService.SoundsService;
 public class SoundsController {
 
 	@Autowired
-<<<<<<< HEAD
-<<<<<<< HEAD
-	SoundsService service;
-=======
-=======
->>>>>>> refs/remotes/origin/Akash
 	SoundsService soundService;
 
 	@PostMapping("/insert")
@@ -113,12 +81,5 @@ public class SoundsController {
 	public String updateSoundByType(@PathVariable String soundType, @RequestBody Sounds updateSound) {
 		return soundService.updateSoundByType(soundType, updateSound);
 	}
-	
-	
-	
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/Akash
-=======
->>>>>>> refs/remotes/origin/Akash
 
 }

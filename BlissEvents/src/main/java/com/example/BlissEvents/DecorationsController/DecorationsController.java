@@ -79,8 +79,4 @@ public class DecorationsController {
 	public String updateDecorationByBrand(@PathVariable("decorationBrand") String decorationBrand, @RequestBody Decorations updatedecorations) {
 		return decorationservice.updateDecorationByBrand(decorationBrand,updatedecorations);
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/Akash
 }
