@@ -63,9 +63,9 @@ public class SoundsController {
 		return soundService.deleteAllSounds(sounds);
 	}
 	
-	@PutMapping("/update-record-by-id/{EventID}")
-	public String updateEventById(@PathVariable Long EventID, @RequestBody Events updatedEvent) {
-		return eventsService.updateEventById(EventID,updatedEvent);
+	@PutMapping("/update-record-by-id/{soundId}")
+	public String updateSoundById(@PathVariable Long soundId, @RequestBody Sounds updateSound) {
+		return soundService.updateSoundById(soundId,updateSound);
 	}
 	
 	@PutMapping("/update-record-by-name/{EventName}")
