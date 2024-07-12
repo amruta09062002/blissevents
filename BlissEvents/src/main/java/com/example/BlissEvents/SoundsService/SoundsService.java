@@ -1,17 +1,25 @@
 package com.example.BlissEvents.SoundsService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.BlissEvents.EventsMessages.EventsMessages;
 import com.example.BlissEvents.SoundsDao.SoundsDao;
+import com.example.BlissEvents.SoundsEntity.Sounds;
 
 @Service
 public class SoundsService {
 
 	@Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SoundsDao dao;
 =======
+=======
+>>>>>>> refs/remotes/origin/Akash
 	SoundsDao soundsDao;
 
 	public String insertSounds(Sounds sounds) {
@@ -108,6 +116,9 @@ public class SoundsService {
 			return EventsMessages.notUpdatedMessage();
 		}
 	}
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/Akash
 
+=======
+>>>>>>> refs/remotes/origin/Akash
 }

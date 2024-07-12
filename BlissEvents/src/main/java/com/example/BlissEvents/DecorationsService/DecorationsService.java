@@ -1,7 +1,10 @@
 package com.example.BlissEvents.DecorationsService;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/Akash
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +17,17 @@ import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/Akash
+=======
 >>>>>>> refs/remotes/origin/Akash
 public class DecorationsService {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/Akash
 	@Autowired
 	DecorationsDao decorationsDao;
 
@@ -118,5 +127,8 @@ public class DecorationsService {
 	}
 		
 		
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/Akash
+=======
 >>>>>>> refs/remotes/origin/Akash
 }

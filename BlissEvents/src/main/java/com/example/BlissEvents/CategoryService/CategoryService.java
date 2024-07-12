@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlissEvents.CategoryDao.CategoryDao;
 import com.example.BlissEvents.CategoryEntity.Categories;
-import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service
@@ -60,4 +59,8 @@ public class CategoryService {
 			return EventsMessages.NotDeleteIdMessage();
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/Akash
 }

@@ -1,8 +1,17 @@
 package com.example.BlissEvents.SoundsDao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.example.BlissEvents.EventsMessages.EventsMessages;
+import com.example.BlissEvents.SoundsEntity.Sounds;
 
 @Repository
 public class SoundsDao {
@@ -10,7 +19,10 @@ public class SoundsDao {
 	@Autowired
 	SessionFactory factory;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/Akash
 
 	public boolean insertSounds(Sounds sounds) {
 		try {
@@ -211,5 +223,8 @@ public class SoundsDao {
 		return EventsMessages.updatedMessage();
 	}
 
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/Akash
+=======
 >>>>>>> refs/remotes/origin/Akash
 }
