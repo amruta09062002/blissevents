@@ -1,6 +1,7 @@
 package com.example.BlissEvents.CategoryService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.BlissEvents.CategoryDao.CategoryDao;
 import com.example.BlissEvents.CategoryEntity.Categories;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
+
+import ch.qos.logback.core.joran.conditional.IfAction;
 
 @Service
 public class CategoryService {
@@ -37,7 +40,7 @@ public class CategoryService {
 	}
 
 	public String updateCategoryById(Long categoriesId, Categories categories) {
-		if (categoryDao.updateCategoryById(categoriesId,categories)) {
+		if (categoryDao.updateCategoryById(categoriesId, categories)) {
 			return EventsMessages.updatedMessage();
 		} else {
 			return EventsMessages.notUpdatedMessage();
@@ -45,9 +48,9 @@ public class CategoryService {
 	}
 
 	public String deleteCategoryById(Long categoriesId) {
-		if(categoryDao.deleteCategoryById(categoriesId)) {
+		if (categoryDao.deleteCategoryById(categoriesId)) {
 			return EventsMessages.deleteIdMessage();
-		}else {
+		} else {
 			return EventsMessages.NotDeleteIdMessage();
 		}
 	}
@@ -58,6 +61,25 @@ public class CategoryService {
 		} else {
 			return EventsMessages.NotDeleteIdMessage();
 		}
+	}
+
+	public List<Categories> getCategoryByName(String categoriesName) {
+		if (categoryDao.getCategoryByName(categoriesName) != null) {
+			return categoryDao.getCategoryByName(categoriesName);
+		} else {
+			EventsMessages.notDisplayMessage();
+		}
+		return null;
+
+	}
+
+	public String deleteCategoryByName(String categoriesName) {
+		if (categoryDao.deleteCategoryByName(categoriesName)) {
+			return EventsMessages.deleteIdMessage();
+		} else {
+			return EventsMessages.NotDeleteIdMessage();
+		}
+
 	}
 
 }

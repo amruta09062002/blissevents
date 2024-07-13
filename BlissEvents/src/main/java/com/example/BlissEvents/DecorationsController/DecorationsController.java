@@ -52,11 +52,11 @@ public class DecorationsController {
 	}
 	
 	@DeleteMapping("/delete-decoration-by-type/{decorationType}")
-	public String deleteDecorationByType(@PathVariable("decorationType") Long decorationType) {
+	public String deleteDecorationByType(@PathVariable("decorationType") String decorationType) {
 		return decorationservice.deleteDecorationByType(decorationType);
 	}
 	
-	public String deleteDecorationByBrand(@PathVariable("decorationBrand") Long decorationBrand) {
+	public String deleteDecorationByBrand(@PathVariable("decorationBrand") String decorationBrand) {
 		return decorationservice.deleteDecorationByBrand(decorationBrand);
 	}
 	
