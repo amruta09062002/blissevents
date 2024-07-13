@@ -2,6 +2,7 @@ package com.example.BlissEvents.UsersEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,18 +17,18 @@ public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long UserId;
-	private String UserName;
-	private String Password;
+	private long userId;
+	private String userName;
+	private String password;
 	private String email;
-	private String FirstName;
-	private String LastName;
+	private String firstName;
+	private String lastName;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name  = "EventID")
 	Events event;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizerID")
 	Organizers organizer;
 	
@@ -35,40 +36,39 @@ public class Users {
 		
 	}
 
-	public Users(long userId, String userName, String password, String email, String firstName, String lastName,
+	public Users(String userName, String password, String email, String firstName, String lastName,
 			Events event, Organizers organizer) {
-		UserId = userId;
-		UserName = userName;
-		Password = password;
+		this.userName = userName;
+		this.password = password;
 		this.email = email;
-		FirstName = firstName;
-		LastName = lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.event = event;
 		this.organizer = organizer;
 	}
 
 	public long getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(long userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
 	public String getUserName() {
-		return UserName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
-		UserName = userName;
+		this.userName = userName;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -80,19 +80,19 @@ public class Users {
 	}
 
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public Events getEvent() {
@@ -110,7 +110,5 @@ public class Users {
 	public void setOrganizer(Organizers organizer) {
 		this.organizer = organizer;
 	}
-	
-	
 	
 }

@@ -59,7 +59,8 @@ public class UsersDao {
 			session = factory.openSession();
 			user = session.get(Users.class, userId);
 		} catch (Exception e) {
-			EventsMessages.errorMessage();
+			//EventsMessages.errorMessage();
+			e.printStackTrace();
 		}
 		return user;
 	}

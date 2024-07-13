@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.example.BlissEvents.EventsEntity.Events;
@@ -16,7 +15,7 @@ public class Attendees {
     
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long attendeeID;
+    private long attendeeId;
     private String firstName;
     private String lastName;
     private String email;
@@ -30,10 +29,8 @@ public class Attendees {
         
     }
     
-    public Attendees(long attendeeID, String firstName, String lastName, String email, String phoneNumber,
+    public Attendees(String firstName, String lastName, String email, String phoneNumber,
 			Events event) {
-		super();
-		this.attendeeID = attendeeID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -41,11 +38,11 @@ public class Attendees {
 		this.event = event;
 	}
 	
-    public long getAttendeeID() {
-        return attendeeID;
+    public long getAttendeeId() {
+        return attendeeId;
     }
     public void setAttendeeID(long attendeeID) {
-        this.attendeeID = attendeeID;
+        this.attendeeId = attendeeId;
     }
     public String getFirstName() {
         return firstName;
