@@ -33,7 +33,7 @@ public class EventsController {
 	}
 
 	@GetMapping("/get-all-events")
-	public ArrayList<Events> getAllEvent() {
+	public List<Events> getAllEvent() {
 	    return eventsService.getAllEvent();
 	}
 

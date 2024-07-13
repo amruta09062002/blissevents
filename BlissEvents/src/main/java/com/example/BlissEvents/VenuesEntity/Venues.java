@@ -11,58 +11,55 @@ public class Venues {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long VenueID;
-	private String VenueName;
-	private String Location;
-	private int Capacity;
+	private Long venueID;
+	private String venueName;
+	private String location;
+	private int capacity;
 	
 	public Venues() {
 		
 	}
-	
+
 	public Venues(Long venueID, String venueName, String location, int capacity) {
-		VenueID = venueID;
-		VenueName = venueName;
-		Location = location;
-		Capacity = capacity;
+		super();
+		this.venueID = venueID;
+		this.venueName = venueName;
+		this.location = location;
+		this.capacity = capacity;
 	}
 
 	public Long getVenueID() {
-		return VenueID;
+		return venueID;
 	}
 
 	public void setVenueID(Long venueID) {
-		VenueID = venueID;
+		this.venueID = venueID;
 	}
 
 	public String getVenueName() {
-		return VenueName;
+		return venueName;
 	}
 
 	public void setVenueName(String venueName) {
-		VenueName = venueName;
+		this.venueName = venueName;
 	}
 
 	public String getLocation() {
-		return Location;
+		return location;
 	}
 
 	public void setLocation(String location) {
-		Location = location;
+		this.location = location;
 	}
 
 	public int getCapacity() {
-		return Capacity;
+		return capacity;
 	}
 
 	public void setCapacity(int capacity) {
-		Capacity = capacity;
+		this.capacity = capacity;
 	}
 
-	@Override
-	public String toString() {
-		return "Venues [VenueID=" + VenueID + ", VenueName=" + VenueName + ", Location=" + Location + ", Capacity="
-				+ Capacity + "]";
-	}
+
 	
 }

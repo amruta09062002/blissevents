@@ -24,8 +24,8 @@ public class UsersController {
 	private UsersService userservice;
 	
 	@PostMapping("/insert")
-	public void insertUser(@RequestBody Users user) {
-		userservice.insertUser(user);
+	public String insertUser(@RequestBody Users user) {
+		return userservice.insertUser(user);
 	}
 	
 	@GetMapping("/get-all-users")

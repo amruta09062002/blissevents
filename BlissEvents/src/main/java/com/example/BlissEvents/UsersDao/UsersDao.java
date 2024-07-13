@@ -46,7 +46,8 @@ public class UsersDao {
 			transaction.commit();
 			return userList;
 		} catch (Exception e) {
-			EventsMessages.errorMessage();
+			//EventsMessages.errorMessage();
+			e.printStackTrace();
 		}
 		return null;
 	}

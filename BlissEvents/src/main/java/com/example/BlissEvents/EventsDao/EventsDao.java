@@ -36,24 +36,24 @@ public class EventsDao {
 		return true;
 	}
 
-	public ArrayList<Events> getAllEvent() {
-	    ArrayList<Events> eventList = null;
+	public List<Events> getAllEvent() {
+	    List<Events> eventList = null;
 	    Session session = null;
 	    try {
 	        session = factory.openSession();
 	        Transaction transaction = session.beginTransaction();
-	        eventList = (ArrayList<Events>) session.createQuery("from events", Events.class).list();
+	        eventList = session.createQuery("from Events", Events.class).list();
 	        transaction.commit();
-	        return eventList;
 	    } catch (Exception e) {
-	        EventsMessages.errorMessage();
+	    	EventsMessages.errorMessage();
 	    } finally {
 	        if (session != null) {
-	            session.close();
+	            session.close(); 
 	        }
 	    }
 	    return eventList;
 	}
+
 
 
 	public Events getEventById(Long eventId) {
@@ -153,7 +153,7 @@ public class EventsDao {
 			if (transaction != null) {
 				transaction.rollback();
 			}
-			EventsMessages.errorMessage();
+			e.printStackTrace();
 		}
 		return true;
 	}

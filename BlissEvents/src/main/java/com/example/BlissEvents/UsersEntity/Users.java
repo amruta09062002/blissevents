@@ -37,7 +37,6 @@ public class Users {
 
 	public Users(long userId, String userName, String password, String email, String firstName, String lastName,
 			Events event, Organizers organizer) {
-		super();
 		UserId = userId;
 		UserName = userName;
 		Password = password;

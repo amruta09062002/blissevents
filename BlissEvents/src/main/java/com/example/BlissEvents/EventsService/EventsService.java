@@ -25,10 +25,11 @@ public class EventsService {
 		}
 	}
 
-	public ArrayList<Events> getAllEvent() {
+	public List<Events> getAllEvent() {
 	    return eventsDao.getAllEvent();
 	}
 
+	
 	public Events getEventById(Long eventId) {
 		if (eventsDao.getEventById(eventId) != null) {
 			return eventsDao.getEventById(eventId);
