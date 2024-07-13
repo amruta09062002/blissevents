@@ -17,7 +17,7 @@ import com.example.BlissEvents.VenuesEntity.Venues;
 import com.example.BlissEvents.VenuesService.VenuesService;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("api/venues")
 public class VenuesController {
 

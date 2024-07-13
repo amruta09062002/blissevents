@@ -14,7 +14,7 @@ import com.example.BlissEvents.EventsEntity.Events;
 public class Sounds {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long soundId;
 	private String soundType;
 	private String soundBrand;
@@ -25,8 +25,7 @@ public class Sounds {
 	private Events event;
 
 	public Sounds() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Sounds(String soundType, String soundBrand, int soundQuantity, Events event) {
@@ -36,7 +35,6 @@ public class Sounds {
 		this.soundQuantity = soundQuantity;
 		this.event = event;
 	}
-
 	
 	public long getSoundId() {
 		return soundId;

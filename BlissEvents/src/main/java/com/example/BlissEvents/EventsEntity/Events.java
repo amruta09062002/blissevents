@@ -22,10 +22,10 @@ public class Events {
 	private Long eventId;
 	private String eventName;
 	private LocalDate eventDate;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "venueId")
-	private Venues venue;
+   
+    @ManyToOne
+    @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
+    private Venues venue;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "OrganizerId")
@@ -34,7 +34,7 @@ public class Events {
 	public Events() {
 		
 	}
-
+	
 	public Events(String eventName, LocalDate eventDate, Venues venue, Organizers organizers) {
 		super();
 		this.eventName = eventName;
@@ -42,11 +42,11 @@ public class Events {
 		this.venue = venue;
 		this.organizers = organizers;
 	}
-
+	
 	public Long getEventId() {
 		return eventId;
 	}
-
+	
 	public void setEventId(Long eventId) {
 		this.eventId = eventId;
 	}
@@ -67,6 +67,14 @@ public class Events {
 		this.eventDate = eventDate;
 	}
 
+	public Organizers getOrganizer() {
+		return organizers;
+	}
+
+	public void setOrganizer(Organizers organizer) {
+		this.organizers = organizer;
+	}
+
 	public Venues getVenue() {
 		return venue;
 	}
@@ -82,8 +90,4 @@ public class Events {
 	public void setOrganizers(Organizers organizers) {
 		this.organizers = organizers;
 	}
-
-	
-	
-
 }

@@ -19,7 +19,6 @@ public class SoundsDao {
 	@Autowired
 	SessionFactory factory;
 
-
 	public boolean insertSounds(Sounds sounds) {
 		try {
 			Session session = factory.openSession();
@@ -218,5 +217,4 @@ public class SoundsDao {
 		}
 		return EventsMessages.updatedMessage();
 	}
-
 }

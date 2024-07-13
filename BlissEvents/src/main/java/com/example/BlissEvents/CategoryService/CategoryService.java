@@ -59,5 +59,4 @@ public class CategoryService {
 			return EventsMessages.NotDeleteIdMessage();
 		}
 	}
-
 }

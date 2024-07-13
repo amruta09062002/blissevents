@@ -19,9 +19,8 @@ public class Venues {
 	public Venues() {
 		
 	}
-
+	
 	public Venues(String venueName, String location, int capacity) {
-		super();
 		this.venueName = venueName;
 		this.location = location;
 		this.capacity = capacity;
@@ -58,6 +57,6 @@ public class Venues {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	
+
 	
 }

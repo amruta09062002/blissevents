@@ -15,7 +15,7 @@ public class Caterings {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cateringID;
+	private long cateringId;
 	private String cateringName;
 	private String cateringMenu;
 	private String contactInfo;
@@ -23,27 +23,23 @@ public class Caterings {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="eventId")
 	private Events event;
-
 	
 	public Caterings() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	}	
+	
 	public Caterings(String cateringName, String cateringMenu, String contactInfo, Events event) {
-		super();
 		this.cateringName = cateringName;
 		this.cateringMenu = cateringMenu;
 		this.contactInfo = contactInfo;
 		this.event = event;
 	}
 
-	public long getCateringID() {
-		return cateringID;
+	public long getCateringId() {
+		return cateringId;
 	}
 
-	public void setCateringID(long cateringID) {
-		this.cateringID = cateringID;
+	public void setCateringId(long cateringId) {
+		this.cateringId = cateringId;
 	}
 
 	public String getCateringName() {

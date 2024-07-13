@@ -14,7 +14,6 @@ import com.example.BlissEvents.SoundsEntity.Sounds;
 public class SoundsService {
 
 	@Autowired
-
 	SoundsDao soundsDao;
 
 	public String insertSounds(Sounds sounds) {

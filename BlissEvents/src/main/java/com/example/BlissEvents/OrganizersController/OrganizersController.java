@@ -28,7 +28,7 @@ public class OrganizersController {
 		return organizersService.insertOrganizer(organizers);
 	}
 
-	@GetMapping
+	@GetMapping("/get-all-organizers")
 	public List<Organizers> getAllOrganizers() {
 		return organizersService.getAllOrganizers();
 	}
