@@ -62,7 +62,7 @@ public class DecorationsService {
 		}
 	}
 
-	public String deleteDecorationByType(Long decorationType) {
+	public String deleteDecorationByType(String decorationType) {
 		if (decorationsDao.deleteDecorationByType(decorationType)) {
 			return EventsMessages.deleteIdMessage();
 		} else {
@@ -70,7 +70,7 @@ public class DecorationsService {
 		}
 	}
 
-	public String deleteDecorationByBrand(Long decorationBrand) {
+	public String deleteDecorationByBrand(String decorationBrand) {
 		if (decorationsDao.deleteDecorationByBrand(decorationBrand)) {
 			return EventsMessages.deleteIdMessage();
 		} else {
