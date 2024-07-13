@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.example.BlissEvents.OrganizersEntity.Organizers;
 import com.example.BlissEvents.VenuesEntity.Venues;
 
 @Entity
@@ -18,50 +19,52 @@ public class Events {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long EventID;
-	private String EventName;
-	private LocalDate EventDate;
+	private Long eventId;
+	private String eventName;
+	private LocalDate eventDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "VenueID")
+	@JoinColumn(name = "venueId")
 	private Venues venue;
 	
-	private Long OrganizerID;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "OrganizerId")
+	private Organizers organizers;
 	
 	public Events() {
 		
 	}
 
-	public Events(Long eventId, String eventName, LocalDate eventDate, Venues venue, Long organizerID) {
-		EventID = eventId;
-		EventName = eventName;
-		EventDate = eventDate;
+	public Events(String eventName, LocalDate eventDate, Venues venue, Organizers organizers) {
+		super();
+		this.eventName = eventName;
+		this.eventDate = eventDate;
 		this.venue = venue;
-		OrganizerID = organizerID;
+		this.organizers = organizers;
 	}
 
-	public Long getEventID() {
-		return EventID;
+	public Long getEventId() {
+		return eventId;
 	}
 
-	public void setEventID(Long eventID) {
-		EventID = eventID;
+	public void setEventId(Long eventId) {
+		this.eventId = eventId;
 	}
 
 	public String getEventName() {
-		return EventName;
+		return eventName;
 	}
 
 	public void setEventName(String eventName) {
-		EventName = eventName;
+		this.eventName = eventName;
 	}
 
 	public LocalDate getEventDate() {
-		return EventDate;
+		return eventDate;
 	}
 
 	public void setEventDate(LocalDate eventDate) {
-		EventDate = eventDate;
+		this.eventDate = eventDate;
 	}
 
 	public Venues getVenue() {
@@ -72,13 +75,15 @@ public class Events {
 		this.venue = venue;
 	}
 
-	public Long getOrganizerID() {
-		return OrganizerID;
+	public Organizers getOrganizers() {
+		return organizers;
 	}
 
-	public void setOrganizerID(Long organizerID) {
-		OrganizerID = organizerID;
+	public void setOrganizers(Organizers organizers) {
+		this.organizers = organizers;
 	}
 
+	
+	
 
 }

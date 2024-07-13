@@ -7,8 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Organizers {
-	
-	private int organizerID; 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	private int organizerId; 
 	private String organizerName;
 	private String phoneNumber;
 	
@@ -21,13 +22,12 @@ public class Organizers {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getOrganizerID() {
-		return organizerID;
+	
+	public int getOrganizerId() {
+		return organizerId;
 	}
-	public void setOrganizerID(int organizerID) {
-		this.organizerID = organizerID;
+	public void setOrganizerId(int organizerId) {
+		this.organizerId = organizerId;
 	}
 	public String getOrganizerName() {
 		return organizerName;

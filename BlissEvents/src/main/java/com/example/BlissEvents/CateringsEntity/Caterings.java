@@ -1,5 +1,6 @@
 package com.example.BlissEvents.CateringsEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +20,23 @@ public class Caterings {
 	private String cateringMenu;
 	private String contactInfo;
 	
-	@ManyToOne
-	@JoinColumn(name="EventID")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="eventId")
 	private Events event;
+
+	
+	public Caterings() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Caterings(String cateringName, String cateringMenu, String contactInfo, Events event) {
+		super();
+		this.cateringName = cateringName;
+		this.cateringMenu = cateringMenu;
+		this.contactInfo = contactInfo;
+		this.event = event;
+	}
 
 	public long getCateringID() {
 		return cateringID;

@@ -1,5 +1,6 @@
 package com.example.BlissEvents.CateringsController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.BlissEvents.AttendeesEntity.Attendees;
@@ -16,6 +18,7 @@ import com.example.BlissEvents.CateringsEntity.Caterings;
 import com.example.BlissEvents.CateringsService.CateringsService;
 
 @RestController
+@RequestMapping("api/caterings")
 public class CateringsController {
 
 	@Autowired
@@ -27,13 +30,13 @@ public class CateringsController {
 	}
 
 	@GetMapping
-	public List<Caterings> getAllCaterings() {
+	public ArrayList<Caterings> getAllCaterings() {
 		return service.getAllCaterings();
 	}
 
 	@GetMapping("/get-catering-by-id/{cateringID}")
-	public Caterings getCateringById(@PathVariable("cateringID") Long id) {
-		return service.getCateringById(id);
+	public Caterings getCateringById(@PathVariable("cateringID") Long cateringID) {
+		return service.getCateringById(cateringID);
 	}
 
 	@GetMapping("/get-catering-by-name/{cateringName}")

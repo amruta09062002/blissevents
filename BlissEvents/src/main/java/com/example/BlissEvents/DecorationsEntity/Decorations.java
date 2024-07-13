@@ -19,7 +19,7 @@ public class Decorations {
 	String decorationBrand;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "eventID")
+	@JoinColumn(name = "eventId")
 	private Events events;
 	
 
