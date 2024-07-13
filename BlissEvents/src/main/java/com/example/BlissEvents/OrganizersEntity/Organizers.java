@@ -10,7 +10,7 @@ public class Organizers {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int organizerID;  
+	private long organizerId;  
 	private String organizerName;
 	private String phoneNumber;
 	
@@ -23,13 +23,13 @@ public class Organizers {
 		this.organizerName = organizerName;
 		this.phoneNumber = phoneNumber;
 	}
-
-	public int getOrganizerID() {
-		return organizerID;
+	
+	public void setOrganizerId(int organizerId) {
+		this.organizerId = organizerId;
 	}
 	
-	public void setOrganizerID(int organizerID) {
-		this.organizerID = organizerID;
+		public void setOrganizerId(long organizerId) {
+		this.organizerId = organizerId;
 	}
 
 	public String getOrganizerName() {

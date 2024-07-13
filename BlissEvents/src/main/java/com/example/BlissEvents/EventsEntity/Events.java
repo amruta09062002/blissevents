@@ -19,15 +19,10 @@ public class Events {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long eventID;
 	private Long eventId;
 	private String eventName;
 	private LocalDate eventDate;
-	
-	@ManyToOne
-    @JoinColumn(name = "organizer_id", referencedColumnName = "organizerId")
-    private Organizers organizer;
-    
+   
     @ManyToOne
     @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
     private Venues venue;
@@ -73,11 +68,11 @@ public class Events {
 	}
 
 	public Organizers getOrganizer() {
-		return organizer;
+		return organizers;
 	}
 
 	public void setOrganizer(Organizers organizer) {
-		this.organizer = organizer;
+		this.organizers = organizer;
 	}
 
 	public Venues getVenue() {

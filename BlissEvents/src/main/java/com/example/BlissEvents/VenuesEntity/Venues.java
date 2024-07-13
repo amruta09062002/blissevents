@@ -11,7 +11,7 @@ public class Venues {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long venueID;
+	private Long venueId;
 	private String venueName;
 	private String location;
 	private int capacity;
@@ -26,12 +26,12 @@ public class Venues {
 		this.capacity = capacity;
 	}
 
-	public Long getVenueID() {
-		return venueID;
+	public Long getVenueId() {
+		return venueId;
 	}
 
-	public void setVenueID(Long venueID) {
-		this.venueID = venueID;
+	public void setVenueId(Long venueId) {
+		this.venueId = venueId;
 	}
 
 	public String getVenueName() {
@@ -57,4 +57,6 @@ public class Venues {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
+
+	
 }
