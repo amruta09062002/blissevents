@@ -26,22 +26,12 @@ public class Venues {
 		this.capacity = capacity;
 	}
 
-<<<<<<< HEAD
 	public Long getVenueID() {
 		return venueID;
-=======
-	public Long getVenueId() {
-		return venueId;
->>>>>>> refs/remotes/origin/Akash
 	}
 
-<<<<<<< HEAD
 	public void setVenueID(Long venueID) {
 		this.venueID = venueID;
-=======
-	public void setVenueId(Long venueId) {
-		this.venueId = venueId;
->>>>>>> refs/remotes/origin/Akash
 	}
 
 	public String getVenueName() {
@@ -67,11 +57,4 @@ public class Venues {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-<<<<<<< HEAD
-
-
-=======
-	
->>>>>>> refs/remotes/origin/Akash
-	
 }
