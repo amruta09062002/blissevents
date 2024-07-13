@@ -2,14 +2,16 @@ package com.example.BlissEvents.DecorationsDao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.example.BlissEvents.DecorationsEntity.Decorations;
+import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
@@ -35,19 +37,17 @@ public class DecorationsDao {
 
 	public ArrayList<Decorations> getAllDecorations(Decorations decorations) {
 		Session session = null;
-		ArrayList<Decorations> decorationslist = null;
+		ArrayList<Decorations> deArrayList = null;
 		try {
 			session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
 			Criteria criteria = session.createCriteria(Decorations.class);
-			decorationslist = (ArrayList<Decorations>) criteria.list();
-			transaction.commit();
+			deArrayList = (ArrayList<Decorations>) criteria.list();
 			session.close();
-			// return decorationslist;
+			return deArrayList;
 		} catch (Exception e) {
 			EventsMessages.errorMessage();
 		}
-		return decorationslist;
+		return deArrayList;
 	}
 
 	public Decorations getDecorationById(Long decorationId) {
@@ -69,13 +69,10 @@ public class DecorationsDao {
 		List<Decorations> dList = null;
 		try {
 			session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationType", decorationType));
+			Criteria criteria = session.createCriteria(Decorations.class, decorationType);
 			dList = criteria.list();
-			transaction.commit();
 			session.close();
-//			return dList;
+			return dList;
 		} catch (Exception e) {
 			EventsMessages.errorMessage();
 		}
@@ -83,17 +80,15 @@ public class DecorationsDao {
 	}
 
 	public List<Decorations> getEventByBrand(String decorationBrand) {
+
 		Session session = null;
 		List<Decorations> dList = null;
 		try {
 			session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationBrand", decorationBrand));
+			Criteria criteria = session.createCriteria(Decorations.class, decorationBrand);
 			dList = criteria.list();
-			transaction.commit();
 			session.close();
-//			return dList;
+			return dList;
 		} catch (Exception e) {
 			EventsMessages.errorMessage();
 		}
@@ -115,17 +110,12 @@ public class DecorationsDao {
 		return true;
 	}
 
-	public boolean deleteDecorationByType(String decorationType) {
-		List<Decorations> dlist = null;
+	public boolean deleteDecorationByType(Long decorationType) {
 		try {
 			Session session = factory.openSession();
 			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationType", decorationType));
-			dlist = criteria.list();
-			for (Decorations decoration : dlist) {
-				session.delete(decoration);
-			}
+			Decorations decorations = session.load(Decorations.class, decorationType);
+			session.delete(decorations);
 			transaction.commit();
 			session.close();
 			return true;
@@ -135,17 +125,12 @@ public class DecorationsDao {
 		return true;
 	}
 
-	public boolean deleteDecorationByBrand(String decorationBrand) {
-		List<Decorations> dlist = null;
+	public boolean deleteDecorationByBrand(Long decorationBrand) {
 		try {
 			Session session = factory.openSession();
 			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationBrand", decorationBrand));
-			dlist = criteria.list();
-			for (Decorations decoration : dlist) {
-				session.delete(decoration);
-			}
+			Decorations decorations = session.load(Decorations.class, decorationBrand);
+			session.delete(decorations);
 			transaction.commit();
 			session.close();
 			return true;
@@ -196,21 +181,17 @@ public class DecorationsDao {
 	}
 
 	public Object updateDecorationByType(String decorationType, Decorations updatedecorations) {
+
 		Transaction transaction = null;
-		List<Decorations> decoration = null;
+		Decorations decorations = null;
 		try (Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationType", decorationType));
-			decoration = criteria.list();
-			if (decoration != null) {
-				for (Decorations decorations : decoration) {
-					decorations.setDecorationBrand(updatedecorations.getDecorationBrand());
-					decorations.setEvents(updatedecorations.getEvents());
-					session.update(decorations);
-				}
+			decorations = session.get(Decorations.class, decorationType);
+			if (decorations != null) {
+				decorations.setDecorationBrand(updatedecorations.getDecorationBrand());
+				decorations.setEvents(updatedecorations.getEvents());
+				session.update(decorations);
 				transaction.commit();
-				session.close();
 				return EventsMessages.updatedMessage();
 			} else {
 				return EventsMessages.notUpdatedMessage();
@@ -225,20 +206,15 @@ public class DecorationsDao {
 
 	public Object updateDecorationByBrand(String decorationBrand, Decorations updatedecorations) {
 		Transaction transaction = null;
-		List<Decorations> decoration = null;
+		Decorations decorations = null;
 		try (Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Decorations.class);
-			criteria.add(Restrictions.eq("decorationBrand", decorationBrand));
-			decoration = criteria.list();
-			if (decoration != null) {
-				for (Decorations decorations : decoration) {
-					decorations.setDecorationType(updatedecorations.getDecorationType());
-					decorations.setEvents(updatedecorations.getEvents());
-					session.update(decorations);
-				}
+			decorations = session.get(Decorations.class, decorationBrand);
+			if (decorations != null) {
+				decorations.setDecorationType(updatedecorations.getDecorationType());
+				decorations.setEvents(updatedecorations.getEvents());
+				session.update(decorations);
 				transaction.commit();
-				session.close();
 				return EventsMessages.updatedMessage();
 			} else {
 				return EventsMessages.notUpdatedMessage();

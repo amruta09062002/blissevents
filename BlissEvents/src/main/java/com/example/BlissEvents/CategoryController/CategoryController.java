@@ -1,7 +1,6 @@
 package com.example.BlissEvents.CategoryController;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,11 +37,6 @@ public class CategoryController {
 		return categoryService.getCategoryById(categoriesId);
 	}
 	
-	@GetMapping("/get-category-by-name/{categoriesId}")
-	public List<Categories> getCategoryByName(@PathVariable("categoriesName") String categoriesName) {
-		return categoryService.getCategoryByName(categoriesName);
-	}
-	
 	@PutMapping("/update-category-by-id/{categoriesId}")
 	public String updateCategoryById(@PathVariable Long categoriesId, @RequestBody Categories categories) {
 		return categoryService.updateCategoryById(categoriesId,categories);
@@ -51,11 +45,6 @@ public class CategoryController {
 	@DeleteMapping("/delete-category-by-id/{categoriesId}")
 	public String deleteCategoryById(@PathVariable("categoriesId") Long categoriesId) {
 		return categoryService.deleteCategoryById(categoriesId);
-	}
-	
-	@DeleteMapping("/delete-category-by-name/{categoriesName}")
-	public String deleteCategoryByName(@PathVariable("categoriesName") String categoriesName) {
-		return categoryService.deleteCategoryByName(categoriesName);
 	}
 	
 	@DeleteMapping("/delete-all-categories")

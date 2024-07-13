@@ -37,8 +37,8 @@ public class SoundsController {
 	}
 
 	@GetMapping("/get-sounds-by-type/{soundType}")
-	public List<Sounds> getSoundByType(@PathVariable("soundType") String type) {
-		return soundService.getSoundByType(type);
+	public List<Sounds> getSoundByType(@PathVariable("soundType") String soundType) {
+		return soundService.getSoundByType(soundType);
 	}
 
 	@GetMapping("/get-sounds-by-brand/{soundBrand}")

@@ -7,7 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +18,7 @@ public class SoundsDao {
 
 	@Autowired
 	SessionFactory factory;
+
 
 	public boolean insertSounds(Sounds sounds) {
 		try {
@@ -38,10 +38,8 @@ public class SoundsDao {
 		ArrayList<Sounds> soundslist = null;
 		try {
 			Session session = factory.openSession();
-			Transaction transaction=session.beginTransaction();
 			Criteria criteria = session.createCriteria(Sounds.class);
 			soundslist = (ArrayList<Sounds>) criteria.list();
-			transaction.commit();
 			session.close();
 			return soundslist;
 		} catch (Exception e) {
@@ -69,33 +67,13 @@ public class SoundsDao {
 		Session session = null;
 		try {
 			session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundType", soundType));
+			Criteria criteria = session.createCriteria(Sounds.class, soundType);
 			soundlist = criteria.list();
-			transaction.commit();
 			session.close();
 		} catch (Exception e) {
 			EventsMessages.errorMessage();
 		}
-		return soundlist;
-	}
-
-	public List<Sounds> getSoundByBrand(String soundBrand) {
-		List<Sounds> soundlist = null;
-		Session session = null;
-		try {
-			session = factory.openSession();
-			Transaction transaction=session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundBrand", soundBrand));
-			soundlist = criteria.list();
-			transaction.commit();
-			session.close();
-		} catch (Exception e) {
-			EventsMessages.errorMessage();
-		}
-		return soundlist;
+		return null;
 	}
 
 	public boolean deleteSoundstById(Long soundId) {
@@ -112,38 +90,13 @@ public class SoundsDao {
 	}
 
 	public boolean deleteSoundByType(String soundType) {
-		boolean isDelete = false;
 		try {
 			Session session = factory.openSession();
 			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundType", soundType));
-			List<Sounds> sounds=criteria.list();
-			for (Sounds sound : sounds) {
-				session.delete(sound);
-			}
+			Sounds sounds = session.load(Sounds.class, soundType);
+			session.delete(sounds);
 			transaction.commit();
 			session.close();
-			isDelete = true;
-		} catch (Exception e) {
-			EventsMessages.errorMessage();
-		}
-		return isDelete;
-	}
-
-	public boolean deleteSoundByBrand(String soundBrand) {
-		try {
-			Session session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundBrand", soundBrand));
-			List<Sounds> sounds = criteria.list();
-			for (Sounds sound : sounds) {
-				session.delete(sound);
-			}
-			transaction.commit();
-			session.close();
-			return true;
 		} catch (Exception e) {
 			EventsMessages.errorMessage();
 		}
@@ -177,7 +130,7 @@ public class SoundsDao {
 				sounds.setEvents(updateSound.getEvents());
 				session.update(sounds);
 				transaction.commit();
-				session.close();
+//				session.close();
 				return EventsMessages.updatedMessage();
 			} else {
 				return EventsMessages.notUpdatedMessage();
@@ -190,23 +143,19 @@ public class SoundsDao {
 		}
 	}
 
-	public String updateSoundByType(String soundType, Sounds updateSound) {
+	public Object updateSoundByType(String soundType, Sounds updateSound) {
 
 		Transaction transaction = null;
+		Sounds sounds = null;
 		try (Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundType", soundType));
-			List<Sounds> sounds = criteria.list();
-			if (sounds != null && !sounds.isEmpty()) {
-				for (Sounds sound : sounds) {
-					sound.setSoundBrand(updateSound.getSoundBrand());
-					sound.setSoundQuantity(updateSound.getSoundQuantity());
-					sound.setEvents(updateSound.getEvents());
-					session.update(sounds);
-				}
+			sounds = session.get(Sounds.class, soundType);
+			if (sounds != null) {
+				sounds.setSoundBrand(updateSound.getSoundBrand());
+				sounds.setSoundQuantity(updateSound.getSoundQuantity());
+				sounds.setEvents(updateSound.getEvents());
+				session.update(sounds);
 				transaction.commit();
-				return EventsMessages.updatedMessage();
 			} else {
 				return EventsMessages.errorMessage();
 			}
@@ -215,29 +164,50 @@ public class SoundsDao {
 			if (transaction != null)
 				transaction.rollback();
 		}
-		return EventsMessages.errorMessage();
+		return EventsMessages.updatedMessage();
+	}
 
+	public boolean deleteSoundByBrand(String soundBrand) {
+		try {
+			Session session = factory.openSession();
+			Transaction transaction = session.beginTransaction();
+			Sounds sounds = session.load(Sounds.class, soundBrand);
+			session.delete(sounds);
+			transaction.commit();
+			session.close();
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
+		}
+		return true;
+	}
+
+	public List<Sounds> getSoundByBrand(String soundBrand) {
+		List<Sounds> soundlist = null;
+		Session session = null;
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sounds.class, soundBrand);
+			soundlist = criteria.list();
+			session.close();
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
+		}
+		return null;
 	}
 
 	public Object updateSoundByBrand(String soundBrand, Sounds updateSound) {
 
 		Transaction transaction = null;
-		List<Sounds> sound = null;
+		Sounds sounds = null;
 		try (Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Sounds.class);
-			criteria.add(Restrictions.eq("soundBrand", soundBrand));
-			sound = criteria.list();
-			if (sound != null && sound.isEmpty()) {
-				for (Sounds sounds : sound) {
-					sounds.setSoundType(updateSound.getSoundType());
-					sounds.setSoundQuantity(updateSound.getSoundQuantity());
-					sounds.setEvents(updateSound.getEvents());
-					session.update(sounds);
-				}
+			sounds = session.get(Sounds.class, soundBrand);
+			if (sounds != null) {
+				sounds.setSoundType(updateSound.getSoundType());
+				sounds.setSoundQuantity(updateSound.getSoundQuantity());
+				sounds.setEvents(updateSound.getEvents());
+				session.update(sounds);
 				transaction.commit();
-				session.close();
-				return EventsMessages.updatedMessage();
 			} else {
 				return EventsMessages.errorMessage();
 			}
@@ -246,7 +216,7 @@ public class SoundsDao {
 			if (transaction != null)
 				transaction.rollback();
 		}
-		return EventsMessages.errorMessage();
+		return EventsMessages.updatedMessage();
 	}
 
 }

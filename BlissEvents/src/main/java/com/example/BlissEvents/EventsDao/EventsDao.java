@@ -105,18 +105,18 @@ public class EventsDao {
 	}
 
 	public boolean deleteEventByName(String eventName) {
-		List<Events> event = null;
+		// List<Events> event = null;
 		Transaction transaction = null;
 		try (Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
 			Criteria criteria = session.createCriteria(Events.class);
 			criteria.add(Restrictions.eq("EventName", eventName));
-			event = criteria.list();
+			List<Events> event = criteria.list();
 			for (Events evnt : event) {
 				session.delete(evnt);
 			}
 			transaction.commit();
-			session.close();
+			// event = criteria.list();
 			return true;
 		} catch (Exception e) {
 			if (transaction != null) {
