@@ -8,40 +8,43 @@ import javax.persistence.Id;
 @Entity
 public class Organizers {
 	
-	private int organizerID; 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long organizerId; 
 	private String organizerName;
 	private String phoneNumber;
+	
 	
 	public Organizers() {
 		
 	}
-	
-	public Organizers(String organizerName, String phoneNumber) {
+
+	public Organizers( String organizerName, String phoneNumber) {
 		this.organizerName = organizerName;
 		this.phoneNumber = phoneNumber;
 	}
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getOrganizerID() {
-		return organizerID;
+
+	public long getOrganizerId() {
+		return organizerId;
 	}
-	public void setOrganizerID(int organizerID) {
-		this.organizerID = organizerID;
+
+	public void setOrganizerId(long organizerId) {
+		this.organizerId = organizerId;
 	}
+
 	public String getOrganizerName() {
 		return organizerName;
 	}
+
 	public void setOrganizerName(String organizerName) {
 		this.organizerName = organizerName;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-
 }

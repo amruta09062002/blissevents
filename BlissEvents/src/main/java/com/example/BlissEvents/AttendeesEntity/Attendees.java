@@ -1,38 +1,43 @@
 package com.example.BlissEvents.AttendeesEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.example.BlissEvents.EventsEntity.Events;
 
 @Entity
 public class Attendees {
     
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long attendeeID;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "EventID")
+    private Events event;
+    
+    public Attendees( String firstName, String lastName, String email, String phoneNumber,
+			Events event) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.event = event;
+	}
+	
     public Attendees() {
-        
+    	
     }
     
-    public Attendees(String firstName, String lastName, String email, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long getAttendeeID() {
-        return attendeeID;
-    }
-    public void setAttendeeID(long attendeeID) {
-        this.attendeeID = attendeeID;
-    }
     public String getFirstName() {
         return firstName;
     }
@@ -57,4 +62,10 @@ public class Attendees {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+	public Events getEvent() {
+		return event;
+	}
+	public void setEvent(Events event) {
+		this.event = event;
+	}
 }

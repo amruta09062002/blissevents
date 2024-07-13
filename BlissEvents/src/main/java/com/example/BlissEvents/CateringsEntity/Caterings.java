@@ -14,7 +14,7 @@ public class Caterings {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cateringID;
+	private long cateringId;
 	private String cateringName;
 	private String cateringMenu;
 	private String contactInfo;
@@ -22,13 +22,24 @@ public class Caterings {
 	@ManyToOne
 	@JoinColumn(name="EventID")
 	private Events event;
-
-	public long getCateringID() {
-		return cateringID;
+	
+	public Caterings() {
+		
+	}
+	
+	public Caterings(String cateringName, String cateringMenu, String contactInfo, Events event) {
+		this.cateringName = cateringName;
+		this.cateringMenu = cateringMenu;
+		this.contactInfo = contactInfo;
+		this.event = event;
 	}
 
-	public void setCateringID(long cateringID) {
-		this.cateringID = cateringID;
+	public long getCateringId() {
+		return cateringId;
+	}
+
+	public void setCateringId(long cateringId) {
+		this.cateringId = cateringId;
 	}
 
 	public String getCateringName() {

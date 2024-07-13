@@ -8,6 +8,7 @@ public class BlissEventsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BlissEventsApplication.class, args);
+		System.err.println("Application is running!");
 	}
 
 }

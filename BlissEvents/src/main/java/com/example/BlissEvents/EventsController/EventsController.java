@@ -21,7 +21,7 @@ import com.example.BlissEvents.EventsService.EventsService;
 
 
 @RestController
-@RequestMapping("api/events")
+@RequestMapping("/api/events")
 public class EventsController {
 
 	@Autowired
@@ -33,8 +33,8 @@ public class EventsController {
 	}
 
 	@GetMapping("/get-all-events")
-	public ArrayList<Events> getAllEvent(Events event) {
-		return eventsService.getAllEvent(event);
+	public ArrayList<Events> getAllEvent() {
+	    return eventsService.getAllEvent();
 	}
 
 	@GetMapping("/get-event-by-id/{eventId}")

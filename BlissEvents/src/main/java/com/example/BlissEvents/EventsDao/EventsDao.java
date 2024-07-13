@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
+import com.example.BlissEvents.VenuesEntity.Venues;
 
 @Repository
 public class EventsDao {
@@ -35,18 +36,25 @@ public class EventsDao {
 		return true;
 	}
 
-	public ArrayList<Events> getAllEvent(Events event) {
-		try {
-			Session session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			ArrayList<Events> eventList = (ArrayList<Events>) session.createQuery("from Events", Events.class).list();
-			transaction.commit();
-			return eventList;
-		} catch (Exception e) {
-			EventsMessages.errorMessage();
-		}
-		return null;
+	public ArrayList<Events> getAllEvent() {
+	    ArrayList<Events> eventList = null;
+	    Session session = null;
+	    try {
+	        session = factory.openSession();
+	        Transaction transaction = session.beginTransaction();
+	        eventList = (ArrayList<Events>) session.createQuery("from events", Events.class).list();
+	        transaction.commit();
+	        return eventList;
+	    } catch (Exception e) {
+	        EventsMessages.errorMessage();
+	    } finally {
+	        if (session != null) {
+	            session.close();
+	        }
+	    }
+	    return eventList;
 	}
+
 
 	public Events getEventById(Long eventId) {
 		Session session = null;
@@ -179,7 +187,7 @@ public class EventsDao {
 				event.setEventName(updatedEvent.getEventName());
 				event.setEventDate(updatedEvent.getEventDate());
 				event.setVenue(updatedEvent.getVenue());
-				event.setOrganizerID(updatedEvent.getOrganizerID());
+				event.setOrganizer(updatedEvent.getOrganizer());
 				session.update(event);
 				transaction.commit();
 				return EventsMessages.updatedMessage();
@@ -206,7 +214,7 @@ public class EventsDao {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
 					evnt.setVenue(updatedEvent.getVenue());
-					evnt.setOrganizerID(updatedEvent.getOrganizerID());
+					evnt.setOrganizer(updatedEvent.getOrganizer());
 					session.update(evnt);
 				}
 				transaction.commit();
@@ -234,7 +242,7 @@ public class EventsDao {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
 					evnt.setVenue(updatedEvent.getVenue());
-					evnt.setOrganizerID(updatedEvent.getOrganizerID());
+					evnt.setOrganizer(updatedEvent.getOrganizer());
 					session.update(evnt);
 				}
 				transaction.commit();

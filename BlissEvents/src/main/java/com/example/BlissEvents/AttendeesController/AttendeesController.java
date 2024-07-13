@@ -27,7 +27,7 @@ public class AttendeesController {
 		return attendeesService.insertAttendee(attendees);
 	}
 
-	@GetMapping
+	@GetMapping("/get-all-attendees")
 	public List<Attendees> getAllAttendees() {
 		return attendeesService.getAllAttendees();
 	}

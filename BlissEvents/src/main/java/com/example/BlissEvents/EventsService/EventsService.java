@@ -25,8 +25,8 @@ public class EventsService {
 		}
 	}
 
-	public ArrayList<Events> getAllEvent(Events event) {
-		return eventsDao.getAllEvent(event);
+	public ArrayList<Events> getAllEvent() {
+	    return eventsDao.getAllEvent();
 	}
 
 	public Events getEventById(Long eventId) {
