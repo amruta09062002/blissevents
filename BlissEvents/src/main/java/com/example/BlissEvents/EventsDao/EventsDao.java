@@ -187,7 +187,11 @@ public class EventsDao {
 				event.setEventName(updatedEvent.getEventName());
 				event.setEventDate(updatedEvent.getEventDate());
 				event.setVenue(updatedEvent.getVenue());
+<<<<<<< HEAD
 				event.setOrganizer(updatedEvent.getOrganizer());
+=======
+				event.setOrganizers(updatedEvent.getOrganizers());
+>>>>>>> refs/remotes/origin/Akash
 				session.update(event);
 				transaction.commit();
 				return EventsMessages.updatedMessage();
@@ -214,7 +218,11 @@ public class EventsDao {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
 					evnt.setVenue(updatedEvent.getVenue());
+<<<<<<< HEAD
 					evnt.setOrganizer(updatedEvent.getOrganizer());
+=======
+					evnt.setOrganizers(updatedEvent.getOrganizers());
+>>>>>>> refs/remotes/origin/Akash
 					session.update(evnt);
 				}
 				transaction.commit();
@@ -242,7 +250,11 @@ public class EventsDao {
 					evnt.setEventName(updatedEvent.getEventName());
 					evnt.setEventDate(updatedEvent.getEventDate());
 					evnt.setVenue(updatedEvent.getVenue());
+<<<<<<< HEAD
 					evnt.setOrganizer(updatedEvent.getOrganizer());
+=======
+					evnt.setOrganizers(updatedEvent.getOrganizers());
+>>>>>>> refs/remotes/origin/Akash
 					session.update(evnt);
 				}
 				transaction.commit();

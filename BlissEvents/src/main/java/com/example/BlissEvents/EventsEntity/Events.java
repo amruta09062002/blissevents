@@ -18,10 +18,15 @@ public class Events {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
 	private Long eventID;
+=======
+	private Long eventId;
+>>>>>>> refs/remotes/origin/Akash
 	private String eventName;
 	private LocalDate eventDate;
 	
+<<<<<<< HEAD
 	@ManyToOne
     @JoinColumn(name = "organizer_id", referencedColumnName = "organizerId")
     private Organizers organizer;
@@ -29,25 +34,55 @@ public class Events {
     @ManyToOne
     @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
     private Venues venue;
+=======
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "venueId")
+	private Venues venue;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "OrganizerId")
+	private Organizers organizers;
+>>>>>>> refs/remotes/origin/Akash
 	
 	public Events() {
 		
 	}
 
+<<<<<<< HEAD
 	public Events(String eventName, LocalDate eventDate, Organizers organizer, Venues venue) {
 		super();
 		this.eventName = eventName;
 		this.eventDate = eventDate;
 		this.organizer = organizer;
+=======
+	public Events(String eventName, LocalDate eventDate, Venues venue, Organizers organizers) {
+		super();
+		this.eventName = eventName;
+		this.eventDate = eventDate;
+>>>>>>> refs/remotes/origin/Akash
 		this.venue = venue;
+<<<<<<< HEAD
+=======
+		this.organizers = organizers;
+>>>>>>> refs/remotes/origin/Akash
 	}
 
+<<<<<<< HEAD
 	public Long getEventID() {
 		return eventID;
+=======
+	public Long getEventId() {
+		return eventId;
+>>>>>>> refs/remotes/origin/Akash
 	}
 
+<<<<<<< HEAD
 	public void setEventID(Long eventID) {
 		this.eventID = eventID;
+=======
+	public void setEventId(Long eventId) {
+		this.eventId = eventId;
+>>>>>>> refs/remotes/origin/Akash
 	}
 
 	public String getEventName() {
@@ -64,6 +99,7 @@ public class Events {
 
 	public void setEventDate(LocalDate eventDate) {
 		this.eventDate = eventDate;
+<<<<<<< HEAD
 	}
 
 	public Organizers getOrganizer() {
@@ -72,6 +108,8 @@ public class Events {
 
 	public void setOrganizer(Organizers organizer) {
 		this.organizer = organizer;
+=======
+>>>>>>> refs/remotes/origin/Akash
 	}
 
 	public Venues getVenue() {
@@ -82,4 +120,18 @@ public class Events {
 		this.venue = venue;
 	}
 
+<<<<<<< HEAD
+=======
+	public Organizers getOrganizers() {
+		return organizers;
+	}
+
+	public void setOrganizers(Organizers organizers) {
+		this.organizers = organizers;
+	}
+
+	
+	
+
+>>>>>>> refs/remotes/origin/Akash
 }

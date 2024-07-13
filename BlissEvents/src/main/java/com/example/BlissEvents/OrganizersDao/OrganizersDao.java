@@ -57,6 +57,8 @@ public class OrganizersDao {
 	    try {
 	        session = factory.openSession();
 	        organizers = session.get(Organizers.class, id);
+	        session.close();
+	        return organizers;
 	    } catch (Exception e) {
 	        e.printStackTrace();  // Log the exception or handle it appropriately
 	        AttendeesMessages.errorMessage();  // Assuming this is a custom method for error messaging

@@ -21,7 +21,7 @@ public class Sounds {
 	private int soundQuantity;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "EventID")
+	@JoinColumn(name = "EventId")
 	private Events event;
 
 	public Sounds() {

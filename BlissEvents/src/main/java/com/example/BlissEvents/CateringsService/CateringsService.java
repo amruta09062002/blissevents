@@ -1,5 +1,6 @@
 package com.example.BlissEvents.CateringsService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class CateringsService {
 		}
 	}
 
-	public List<Caterings> getAllCaterings() {
+	public ArrayList<Caterings> getAllCaterings() {
 		return dao.getAllCaterings();
 	}
 

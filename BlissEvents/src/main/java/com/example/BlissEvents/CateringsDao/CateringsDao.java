@@ -1,5 +1,6 @@
 package com.example.BlissEvents.CateringsDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -36,15 +37,16 @@ public class CateringsDao {
 		return true;
 	}
 
-	public List<Caterings> getAllCaterings() {
-		List<Caterings> cateringsList = null;
+	public ArrayList<Caterings> getAllCaterings() {
+		ArrayList<Caterings> cateringsList = null;
 		try {
 			Session session = factory.openSession();
 			Transaction transaction = session.beginTransaction();
-			cateringsList = session.createQuery("from Caterings", Caterings.class).list();
+			cateringsList = (ArrayList<Caterings>) session.createQuery("from Caterings", Caterings.class).list();
 			transaction.commit();
 		} catch (Exception e) {
-			AttendeesMessages.errorMessage();
+			//AttendeesMessages.errorMessage();
+			e.printStackTrace();
 		}
 		return cateringsList;
 	}
@@ -196,6 +198,7 @@ public class CateringsDao {
 
 				session.update(existingCatering);
 				transaction.commit();
+				session.close();
 				isUpdated = true;
 			} else {
 				AttendeesMessages.nullValue();
