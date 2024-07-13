@@ -1,18 +1,24 @@
 package com.example.BlissEvents.CategoryDao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.BlissEvents.CategoryEntity.Categories;
+import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Repository
 public class CategoryDao {
+
+	@Autowired
 	SessionFactory factory;
 
 	public boolean insertCategory(Categories categories) {
@@ -114,6 +120,44 @@ public class CategoryDao {
 		} catch (Exception e) {
 			if(transaction!=null)
 				transaction.rollback();
+		}
+		return true;
+	}
+
+	public  List<Categories> getCategoryByName(String categoriesName) {
+		List<Categories> clist=null;
+		
+		try {
+			Session session=factory.openSession();
+			Transaction transaction=session.beginTransaction();
+			Criteria criteria=session.createCriteria(Categories.class);
+			criteria.add(Restrictions.eq("categoriesName", categoriesName));
+			clist=criteria.list();
+			transaction.commit();
+			session.close();
+			
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
+		}
+		return clist;
+	}
+
+	public  boolean deleteCategoryByName(String categoriesName) {
+		List<Categories> clist=null;
+		try {
+			Session session=factory.openSession();
+			Transaction transaction=session.beginTransaction();
+			Criteria criteria=session.createCriteria(Categories.class);
+			criteria.add(Restrictions.eq("categoriesName", categoriesName));
+			clist=criteria.list();
+			for (Categories categories : clist) {
+				session.delete(categories);
+			}
+			transaction.commit();
+			session.close();
+			return true;
+		} catch (Exception e) {
+			EventsMessages.errorMessage();
 		}
 		return true;
 	}
