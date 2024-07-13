@@ -14,7 +14,7 @@ public class Photographers {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long photographerID;
+	private long photographerId;
 	private String photographerName;
 	private String contactInfo;
 	
@@ -22,12 +22,20 @@ public class Photographers {
 	@JoinColumn(name="EventID")
 	private Events event;
 
-	public long getPhotographerID() {
-		return photographerID;
+	
+	
+	public Photographers(String photographerName, String contactInfo, Events event) {
+		this.photographerName = photographerName;
+		this.contactInfo = contactInfo;
+		this.event = event;
 	}
 
-	public void setPhotographerID(long photographerID) {
-		this.photographerID = photographerID;
+	public long getPhotographerId() {
+		return photographerId;
+	}
+
+	public void setPhotographerId(long photographerId) {
+		this.photographerId = photographerId;
 	}
 
 	public String getPhotographerName() {

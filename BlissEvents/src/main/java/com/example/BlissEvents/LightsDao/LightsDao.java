@@ -61,16 +61,17 @@ public class LightsDao {
 
 	public List<Lights> getLightByType(String lightType) {
 		List<Lights> light = null;
-		try {
+		//try {
 			Session session = factory.openSession();
 			Transaction transaction = session.beginTransaction();
 			Criteria criteria = session.createCriteria(Events.class);
-			criteria.add(Restrictions.eq("lightType", lightType));
+			criteria.add(Restrictions.eq("LightType", lightType));
 			transaction.commit();
 			light = criteria.list();
-		} catch (Exception e) {
-			EventsMessages.errorMessage();
-		}
+//		} catch (Exception e) {
+//			//EventsMessages.errorMessage();
+//			e.printStackTrace();
+//		}
 		return light;
 	}
 

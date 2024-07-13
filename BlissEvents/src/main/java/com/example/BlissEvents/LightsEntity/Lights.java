@@ -15,10 +15,10 @@ public class Lights {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long LightId;
-	private String LightType;
-	private String LightBrand;
-	private int LightQuantity;
+	private long lightId;
+	private String lightType;
+	private String lightBrand;
+	private int lightQuantity;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "EventID")
@@ -28,45 +28,43 @@ public class Lights {
 		
 	}
 
-	public Lights(long lightId, String lightType, String lightBrand, int lightQuantity, Events event) {
-		super();
-		LightId = lightId;
-		LightType = lightType;
-		LightBrand = lightBrand;
-		LightQuantity = lightQuantity;
+	public Lights(String lightType, String lightBrand, int lightQuantity, Events event) {
+		this.lightType = lightType;
+		this.lightBrand = lightBrand;
+		this.lightQuantity = lightQuantity;
 		this.event = event;
 	}
 
 	public long getLightId() {
-		return LightId;
+		return lightId;
 	}
 
 	public void setLightId(long lightId) {
-		LightId = lightId;
+		this.lightId = lightId;
 	}
 
 	public String getLightType() {
-		return LightType;
+		return lightType;
 	}
 
 	public void setLightType(String lightType) {
-		LightType = lightType;
+		this.lightType = lightType;
 	}
 
 	public String getLightBrand() {
-		return LightBrand;
+		return lightBrand;
 	}
 
 	public void setLightBrand(String lightBrand) {
-		LightBrand = lightBrand;
+		this.lightBrand = lightBrand;
 	}
 
 	public int getLightQuantity() {
-		return LightQuantity;
+		return lightQuantity;
 	}
 
 	public void setLightQuantity(int lightQuantity) {
-		LightQuantity = lightQuantity;
+		this.lightQuantity = lightQuantity;
 	}
 
 	public Events getEvent() {
@@ -76,7 +74,7 @@ public class Lights {
 	public void setEvent(Events event) {
 		this.event = event;
 	}
-	
-	
+
+
 	
 }

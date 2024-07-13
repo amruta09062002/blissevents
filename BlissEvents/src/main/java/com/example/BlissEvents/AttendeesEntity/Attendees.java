@@ -29,7 +29,7 @@ public class Attendees {
         
     }
     
-    public Attendees(String firstName, String lastName, String email, String phoneNumber,
+    public Attendees( String firstName, String lastName, String email, String phoneNumber,
 			Events event) {
 		this.firstName = firstName;
 		this.lastName = lastName;

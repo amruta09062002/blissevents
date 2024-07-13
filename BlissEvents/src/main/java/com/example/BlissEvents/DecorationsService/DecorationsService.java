@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.BlissEvents.DecorationsDao.DecorationsDao;
 import com.example.BlissEvents.DecorationsEntity.Decorations;
-import com.example.BlissEvents.EventsEntity.Events;
 import com.example.BlissEvents.EventsMessages.EventsMessages;
 
 @Service
