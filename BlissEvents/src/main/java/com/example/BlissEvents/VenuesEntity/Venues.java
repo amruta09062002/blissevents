@@ -25,11 +25,20 @@ public class Venues {
 		this.location = location;
 		this.capacity = capacity;
 	}
-	
+
+<<<<<<< HEAD
+	public Long getVenueID() {
+		return venueID;
+=======
 	public Long getVenueId() {
 		return venueId;
+>>>>>>> refs/remotes/origin/Akash
 	}
-	
+
+<<<<<<< HEAD
+	public void setVenueID(Long venueID) {
+		this.venueID = venueID;
+=======
 	public void setVenueId(Long venueId) {
 		this.venueId = venueId;
 >>>>>>> refs/remotes/origin/Akash
